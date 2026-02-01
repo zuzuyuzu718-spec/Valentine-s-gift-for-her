@@ -150,6 +150,241 @@
             font-size: 1.2rem;
             border: 2px solid var(--pink);
         }
+
+        /* Timer styling */
+        .timer-box {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 10px 25px rgba(214, 51, 132, 0.25);
+            width: 100%;
+            max-width: 340px;
+            text-align: center;
+        }
+
+        .timer-box h2 {
+            margin: 0 0 12px 0;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .timer {
+            font-size: 1.45rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .timer span {
+            background: rgba(255,255,255,0.28);
+            padding: 8px 12px;
+            border-radius: 12px;
+            margin: 0 5px;
+            min-width: 45px;
+            display: inline-block;
+        }
+
+        .timer-note {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="valentineMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicToggle" onclick="toggleMusic()">🎵</button>
+
+    <div class="hearts-bg" id="hearts-container"></div>
+
+    <div id="p1" class="container active">
+        <h1>Do you love me and will you be my valentine forever?</h1>
+        <img src="cat.jpg" class="cat-media" onerror="this.src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZqZzR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif'">
+        <div class="btn-group">
+            <button class="btn-yes" onclick="startExperience()">Yes!</button>
+            <button class="btn-no" onclick="showPage('p2')">No</button>
+        </div>
+    </div>
+
+    <div id="p2" class="container">
+        <h1>How dare you huh?! 😡</h1>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHpueGZ3bmZqZzR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mlvseq9yvZhba/giphy.gif" class="cat-media">
+        <button class="btn-primary" onclick="showPage('p1')">I'm sorry, Try again ❤️</button>
+    </div>
+
+    <div id="p3" class="container">
+        <h1>Yay! I knew it! 🥰</h1>
+        <video autoplay loop muted playsinline class="cat-media">
+            <source src="happy.mp4" type="video/mp4">
+        </video>
+        <button class="btn-primary" onclick="showPage('p4')">Open your gift →</button>
+    </div>
+
+    <div id="p4" class="container">
+        <h1>A Letter for You</h1>
+        <div class="letter-box">
+            <div style="font-family: 'Quicksand', sans-serif; font-size: 0.8rem; text-align: center; margin-bottom: 15px; color: var(--dark-pink); opacity: 0.7;">
+                📜 Scroll down to read more...
+            </div>
+            I coded this specifically for you because I wanted you to have something unique. Ik zada acha nhi bana hai me aur perfect bana sakta tha but isko banate banate he halat kharab ho gya mera, it took me 17days actually to complete it. 
+            <br><br>
+            Jo bhi ho but you make my every day brighter just by being in it so I wanted to create this small digital space for you and only for you alone my. From the moment we met, my world started changing in many ways jinme mene kabhi nhi socha tha. Jab bhi tumahare sath rehta hu ek alag he feeling ati hai jaise ki everything stopped. 
+            <br><br>
+            Whether we are laughing or just silently ek dusre ko dekh rahe hai but that is the best thing to do in life. I know a website might seem like just lines of code, but every bracket, every color choice, and every photo was chosen with love. It’s a small part of my love for you. 
+            <br><br>
+            You are my best friend, my greatest supporter, and the person who understands me better than myself. Thank you for being the best and for your kindness, care and love towards me. You deserve the best in this world and ye "sure" and "ok" bolna bandh kar de lal. I hope this little surprise brings a smile to your face, because your smile is my favorite thing in the world. I love you more than words (or code) could ever express. Happy Valentine’s Day my lady.
+        </div>
+        <button class="btn-primary" onclick="showPage('p4-5')">Our time together →</button>
+    </div>
+
+    <!-- New timer page -->
+    <div id="p4-5" class="container">
+        <h1>Since We Started Dating 💕</h1>
+        <div class="timer-box">
+            <h2>We've been together for</h2>
+            <div class="timer">
+                <span id="days">0</span> days
+                <span id="hours">00</span> hrs
+                <span id="minutes">00</span> min
+                <span id="seconds">00</span> sec
+            </div>
+            <div class="timer-note">
+                1st January 2026, 1:14 PM — every moment with you is magic ✨
+            </div>
+        </div>
+        <button class="btn-primary" onclick="showPage('p5')">See our memories →</button>
+    </div>
+
+    <div id="p5" class="container">
+        <h1>I always luvvvvv u bby</h1>
+        <div class="photo-grid">
+            <img src="1.jpg" style="transform: rotate(-3deg)">
+            <img src="5.jpg" style="transform: rotate(2deg)">
+            <img src="4.jpg" style="transform: rotate(-2deg)">
+            <img src="4.jpg" style="transform: rotate(3deg)">
+            <img src="3.jpg" style="transform: rotate(-1deg)">
+            <img src="9.jpg" style="transform: rotate(4deg)">
+            <img src="2.jpg" style="transform: rotate(-4deg)">
+            <img src="7.jpg" style="transform: rotate(2deg)">
+            <img src="8.jpg" style="transform: rotate(-2deg)">
+        </div>
+        <button class="btn-primary" onclick="showPage('p6')">The last gift</button>
+    </div>
+
+    <div id="p6" class="container">
+        <video autoplay loop muted playsinline class="cat-media">
+            <source src="kiss.mp4" type="video/mp4">
+        </video>
+        <h1 style="font-size: 1.4rem;">I love you forever! Nwahhhhhhhhhhhhhh my lady, this guy loves you so much. Happy Valentine's Day! ❤️</h1>
+    </div>
+
+    <script>
+        const music = document.getElementById('valentineMusic');
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                document.getElementById('musicToggle').innerHTML = "🎶";
+            } else {
+                music.pause();
+                document.getElementById('musicToggle').innerHTML = "🎵";
+            }
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        function startExperience() {
+            music.play().catch(e => console.log("Audio play needs interaction"));
+            document.getElementById('musicToggle').innerHTML = "🎶";
+            showPage('p3');
+        }
+
+        function createHeart() {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.innerHTML = ['❤️', '💖', '💕', '✨', '🌸'][Math.floor(Math.random() * 5)];
+            heart.style.position = 'absolute';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+            heart.style.opacity = Math.random();
+            heart.style.userSelect = 'none';
+            heart.style.transition = 'transform 6s linear, opacity 6s linear';
+            container.appendChild(heart);
+
+            setTimeout(() => {
+                heart.style.transform = `translateY(-110vh) rotate(${Math.random() * 360}deg)`;
+                heart.style.opacity = '0';
+            }, 50);
+
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+        setInterval(createHeart, 300);
+
+        // ────────────────────────────────────────────────
+        //          Live relationship timer
+        // ────────────────────────────────────────────────
+        function updateTimer() {
+            const startDate = new Date('2026-01-01T13:14:00+05:30'); // 1:14 PM IST
+            const now = new Date();
+            let diff = now - startDate;
+
+            if (diff < 0) {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            diff %= (1000 * 60 * 60 * 24);
+
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            diff %= (1000 * 60 * 60);
+
+            const minutes = Math.floor(diff / (1000 * 60));
+            diff %= (1000 * 60);
+
+            const seconds = Math.floor(diff / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Update every second
+        setInterval(updateTimer, 1000);
+        updateTimer(); // run once immediately
+    </script>
+</body>
+</html>        #musicToggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 2px solid var(--pink);
+        }
     </style>
 </head>
 <body>
