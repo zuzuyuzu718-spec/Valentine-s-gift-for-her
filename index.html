@@ -150,6 +150,139 @@
             font-size: 1.2rem;
             border: 2px solid var(--pink);
         }
+    </style>
+</head>
+<body>
+
+    <audio id="valentineMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicToggle" onclick="toggleMusic()">🎵</button>
+
+    <div class="hearts-bg" id="hearts-container"></div>
+
+    <div id="p1" class="container active">
+        <h1>Do you love me and will you be my valentine forever?</h1>
+        <img src="cat.jpg" class="cat-media" onerror="this.src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZqZzR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif'">
+        <div class="btn-group">
+            <button class="btn-yes" onclick="startExperience()">Yes!</button>
+            <button class="btn-no" onclick="showPage('p2')">No</button>
+        </div>
+    </div>
+
+    <div id="p2" class="container">
+        <h1>How dare you huh?! 😡</h1>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHpueGZ3bmZqZzR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mlvseq9yvZhba/giphy.gif" class="cat-media">
+        <button class="btn-primary" onclick="showPage('p1')">I'm sorry, Try again ❤️</button>
+    </div>
+
+    <div id="p3" class="container">
+        <h1>Yay! I knew it! 🥰</h1>
+        <video autoplay loop muted playsinline class="cat-media">
+            <source src="happy.mp4" type="video/mp4">
+        </video>
+        <button class="btn-primary" onclick="showPage('p4')">Open your gift →</button>
+    </div>
+
+    <div id="p4" class="container">
+        <h1>A Letter for You</h1>
+        <div class="letter-box">
+            <div style="font-family: 'Quicksand', sans-serif; font-size: 0.8rem; text-align: center; margin-bottom: 15px; color: var(--dark-pink); opacity: 0.7;">
+                📜 Scroll down to read more...
+            </div>
+            I coded this specifically for you because I wanted you to have something unique. Ik zada acha nhi bana hai me aur perfect bana sakta tha but isko banate banate he halat kharab ho gya mera, it took me 17days actually to complete it. 
+            <br><br>
+            Jo bhi ho but you make my every day brighter just by being in it so I wanted to create this small digital space for you and only for you alone my. From the moment we met, my world started changing in many ways jinme mene kabhi nhi socha tha. Jab bhi tumahare sath rehta hu ek alag he feeling ati hai jaise ki everything stopped. 
+            <br><br>
+            Whether we are laughing or just silently ek dusre ko dekh rahe hai but that is the best thing to do in life. I know a website might seem like just lines of code, but every bracket, every color choice, and every photo was chosen with love. It’s a small part of my love for you. 
+            <br><br>
+            You are my best friend, my greatest supporter, and the person who understands me better than myself. Thank you for being the best and for your kindness, care and love towards me. You deserve the best in this world and ye "sure" and "ok" bolna bandh kar de lal. I hope this little surprise brings a smile to your face, because your smile is my favorite thing in the world. I love you more than words (or code) could ever express. Happy Valentine’s Day my lady.
+        </div>
+        <button class="btn-primary" onclick="showPage('p5')">See our memories</button>
+    </div>
+
+    <div id="p5" class="container">
+        <h1>I always luvvvvv u bby</h1>
+        <div class="photo-grid">
+            <img src="1.jpg" style="transform: rotate(-3deg)">
+            <img src="5.jpg" style="transform: rotate(2deg)">
+            <img src="4.jpg" style="transform: rotate(-2deg)">
+            <img src="4.jpg" style="transform: rotate(3deg)">
+            <img src="3.jpg" style="transform: rotate(-1deg)">
+            <img src="9.jpg" style="transform: rotate(4deg)">
+            <img src="2.jpg" style="transform: rotate(-4deg)">
+            <img src="7.jpg" style="transform: rotate(2deg)">
+            <img src="8.jpg" style="transform: rotate(-2deg)">
+        </div>
+        <button class="btn-primary" onclick="showPage('p6')">The last gift</button>
+    </div>
+
+    <div id="p6" class="container">
+        <video autoplay loop muted playsinline class="cat-media">
+            <source src="kiss.mp4" type="video/mp4">
+        </video>
+        <h1 style="font-size: 1.4rem;">I love you forever! Nwahhhhhhhhhhhhhh my lady, this guy loves you so much. Happy Valentine's Day! ❤️</h1>
+    </div>
+
+    <script>
+        const music = document.getElementById('valentineMusic');
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                document.getElementById('musicToggle').innerHTML = "🎶";
+            } else {
+                music.pause();
+                document.getElementById('musicToggle').innerHTML = "🎵";
+            }
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        function startExperience() {
+            music.play().catch(e => console.log("Audio play needs interaction"));
+            document.getElementById('musicToggle').innerHTML = "🎶";
+            showPage('p3');
+        }
+
+        function createHeart() {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.innerHTML = ['❤️', '💖', '💕', '✨', '🌸'][Math.floor(Math.random() * 5)];
+            heart.style.position = 'absolute';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+            heart.style.opacity = Math.random();
+            heart.style.userSelect = 'none';
+            heart.style.transition = 'transform 6s linear, opacity 6s linear';
+            container.appendChild(heart);
+
+            setTimeout(() => {
+                heart.style.transform = `translateY(-110vh) rotate(${Math.random() * 360}deg)`;
+                heart.style.opacity = '0';
+            }, 50);
+
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>            height: 45px;
+            border-radius: 50%;
+            background: var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 2px solid var(--pink);
+        }
 
         /* Timer styling */
         .timer-box {
